@@ -9,12 +9,10 @@ app = Flask(__name__)
 
 
 # main homepage of the website
-@app.route('/', methods = ['GET', 'POST'])
+@app.route('/')
 def home():
     if request.method == 'GET':
         return render_template("home.html")    
-    else:
-        return render_template("data.html")
 # runs our app using Flask
 if __name__ == "__main__":
     app.run(debug = True)
