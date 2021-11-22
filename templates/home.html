@@ -4,6 +4,7 @@
     <script>
         let accelerometer = null;
         function collect() {
+            console.log("bestie <3");
             navigator.permissions.query({ name: 'accelerometer' })
                 .then(result => {
                     if (result.state === 'denied') {
