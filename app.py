@@ -21,7 +21,7 @@ def data():
     accx.append(request.args.get('x'))
     accy.append(request.args.get('y'))
     accz.append(request.args.get('z'))
-    return "<p> " + str(accx)+"<br>"+str(accy)+"<br>" +str(accz)+ " </p>"
+    return "<p> x accel:" + accx+"<br>y accel:"+accy+"<br>z accel:" +accz+ " </p>"
 # runs our app using Flask
 if __name__ == "__main__":
     app.run(debug = True)
