@@ -2,37 +2,25 @@
 <head>
     <title>CS 328 - Final Project (Group 7)</title>
     <script>
-        var accx = [];
-        var accy = [];
-        var accz = [];
+        var x = [];
+        var y = [];
+        var z = [];
         function handleMotionEvent(event) {
 
-            var x = event.acceleration.x;
-            var y = event.acceleration.y;
-            var z = event.acceleration.z;
-            accx.push(x);
-            accy.push(y);
-            accz.push(z);
-            console.log(x);
+            x.push(event.acceleration.x);
+            y.push(event.acceleration.y);
+            z.push(event.acceleration.z);
+           
         }
-        function submit() {
-            window.removeEventListener("devicemotion", handleMotionEvent);
-            document.forms['form']['data'].value = accx.join()+';'+accy.join()+';'+accz.join();
-            document.getElementById("form").submit();
-        }
-        function getdata() {
-            alert("collecting data");
-            window.addEventListener("devicemotion", handleMotionEvent, true);
-        }
+        window.addEventListener("devicemotion", handleMotionEvent, true);
+        window.setInterval(function () {
+            $("#update").load("/?x=" + x.join() + "&y=" + y.join() + "&z=" + z.join());
+        }, 100)
+            
     </script>
 </head>
 <body>
-    <button onclick="submit()">View Signal</button>
-    <button onclick="getdata()" id="b">Get Data</button>
-    <form id="form" method="POST" action="/">
-        <input type="text" name='data' >
-
-    </form>
+    <div id="update"></div>
 </body>
 
 </html>
