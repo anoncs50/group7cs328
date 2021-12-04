@@ -1,0 +1,9 @@
+
+*.db-wal
+.vs/group7cs328/v16/Browse.VC.db-wal
+.vs/group7cs328/v16/Browse.VC.db
+.vs/group7cs328/v16/Browse.VC.db-shm
+.vs/group7cs328/v16/Browse.VC.opendb
+.vs/slnx.sqlite
+.vs/slnx.sqlite-journal
+.vs/slnx.sqlite
