@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 
 # main homepage of the website
-@app.route('/')
+@app.route('/', methods=['GET','POST'])
 def home():
     if request.method == 'GET':
         return render_template("home.html")    
