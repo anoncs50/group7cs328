@@ -17,7 +17,6 @@
         }
         function submit() {
             document.forms['form']['data'].value = accx.join()+';'+accy.join()+';'+accz.join();
-            document.getElementById("form").submit();
         }
         function getdata() {
             alert("collecting data");
@@ -26,10 +25,11 @@
     </script>
 </head>
 <body>
-    <button onclick="getdata()" id ="b">Get Data</button>
+    <button onclick="getdata()" id="b">Get Data</button>
+    
+    <button onclick="submit()">View Signal</button>
     <form id="form" method="POST" action="/">
-        <input type="text" name='data' style="display: none;">
-        <button onclick="submit()">View Signal</button>
+        <input type="text" name='data'>
     </form>
 </body>
 
