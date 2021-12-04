@@ -1,6 +1,9 @@
 <html>
 <head>
     <title>CS 328 - Final Project (Group 7)</title>
+    <script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/js/sprinkle.js"></script>
     <script>
         var x = [];
         var y = [];
@@ -10,16 +13,17 @@
             x.push(event.acceleration.x);
             y.push(event.acceleration.y);
             z.push(event.acceleration.z);
-           
+
         }
         window.addEventListener("devicemotion", handleMotionEvent, true);
         window.setInterval(function () {
             $("#update").load("/data?x=" + x.join() + "&y=" + y.join() + "&z=" + z.join());
         }, 5000)
-            
+
     </script>
 </head>
 <body>
+    Hey bestie <3
     <div id="update"></div>
 </body>
 
