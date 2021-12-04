@@ -6,7 +6,7 @@ import base64
 import math
 # the app we use to manage the routes and run the app
 app = Flask(__name__)
-
+app.config['SECRET_KEY'] = "gotti"
 
 # main homepage of the website
 @app.route('/', methods=['GET'])
