@@ -12,10 +12,17 @@
             y = event.acceleration.y;
             z = event.acceleration.z;
         }
-        window.addEventListener("devicemotion", handleMotionEvent, true);
-        window.setInterval(function () {
-            $("#update").load("/data?x=" + x + "&y=" + y + "&z=" + z);
-        }, 100)
+        DeviceMotionEvent.requestPermission().then(response => {
+            if (response == 'granted') {
+                // Add a listener to get smartphone acceleration 
+                // in the XYZ axes (units in m/s^2)
+                window.addEventListener("devicemotion", handleMotionEvent, true);
+                window.setInterval(function () {
+                    $("#update").load("/data?x=" + x + "&y=" + y + "&z=" + z);
+                }, 100)
+            }
+        });
+        
 
     </script>
 </head>
