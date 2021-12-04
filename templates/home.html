@@ -2,17 +2,33 @@
 <head>
     <title>CS 328 - Final Project (Group 7)</title>
     <script>
-        function collect() {
-            console.log("bestie <3");
+        var accx = [];
+        var accy = [];
+        var accz = [];
+        function handleMotionEvent(event) {
+
+            var x = event.acceleration.x;
+            var y = event.acceleration.y;
+            var z = event.acceleration.z;
+            accx.push(x);
+            accy.push(y);
+            accz.push(z);
         }
         function submit() {
+            document.forms['form']['data'].value = accx.join()+';'+accy.join()+';'+accz.join();
             document.getElementById("form").submit();
+        }
+        function getdata() {
+            alert("collecting data");
+            window.addEventListener("devicemotion", handleMotionEvent, true);
         }
     </script>
 </head>
 <body>
-    <form id="form"  method="POST" action="/">
-         <button onclick="submit()">View Signal</button>
+    <button onclick="getdata()" id ="b" style="display: none;">Get Data</button>
+    <form id="form" method="POST" action="/">
+        <input type="text" name='data' style="display: none;">
+        <button onclick="submit()">View Signal</button>
     </form>
 </body>
 
