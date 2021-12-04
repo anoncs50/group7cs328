@@ -18,10 +18,10 @@ def home():
 #get data
 @app.route('/data')
 def data():
-    x = request.args.get('x')
-    y = request.args.get('y')
-    z = request.args.get('z')
-    return "<p> " + x+"<br>"+y+"<br>" +z+ " </p>"
+    accx.append(request.args.get('x'))
+    accy.append(request.args.get('y'))
+    accz.append(request.args.get('z'))
+    return "<p> " + str(accx)+"<br>"+str(accy)+"<br>" +str(accz)+ " </p>"
 # runs our app using Flask
 if __name__ == "__main__":
     app.run(debug = True)

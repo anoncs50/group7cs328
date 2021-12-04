@@ -3,19 +3,18 @@
     <title>CS 328 - Final Project (Group 7)</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        var x = [];
-        var y = [];
-        var z = [];
+        var x = 0;
+        var y = 0;
+        var z = 0;
         function handleMotionEvent(event) {
 
-            x.push(event.acceleration.x);
-            y.push(event.acceleration.y);
-            z.push(event.acceleration.z);
-
+            x = event.acceleration.x;
+            y = event.acceleration.y;
+            z = event.acceleration.z;
         }
         window.addEventListener("devicemotion", handleMotionEvent, true);
         window.setInterval(function () {
-            $("#update").load("/data?x=" + x.join() + "&y=" + y.join() + "&z=" + z.join());
+            $("#update").load("/data?x=" + x + "&y=" + y + "&z=" + z);
         }, 5000)
 
     </script>
