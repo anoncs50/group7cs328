@@ -14,8 +14,8 @@ def home():
     if request.method == 'GET':
         return render_template("home.html")    
     else:
-        data = request.form['data'] 
-        return render_template("data.html", data)
+        #data = request.form['data'] 
+        return render_template("data.html")
 # runs our app using Flask
 if __name__ == "__main__":
     app.run(debug = True)
