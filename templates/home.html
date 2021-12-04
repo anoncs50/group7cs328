@@ -18,7 +18,7 @@
         function submit() {
             window.removeEventListener("devicemotion", handleMotionEvent);
             document.forms['form']['data'].value = accx.join()+';'+accy.join()+';'+accz.join();
-            //document.getElementById("form").submit();
+            document.getElementById("form").submit();
         }
         function getdata() {
             alert("collecting data");
