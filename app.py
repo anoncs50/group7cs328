@@ -16,13 +16,13 @@ def home():
 #get data
 @app.route('/data')
 def data():
-    if not session['accx'] or not session['accy'] or not session['accz']:
+    if not 'accx' in session or not 'accy' in session or not 'accz' in session:
         session['accx'] = []
         session['accy'] = []
         session['accz'] = []
-    accx.append(request.args.get('x'))
-    accy.append(request.args.get('y'))
-    accz.append(request.args.get('z'))
+    session['accx'].append(request.args.get('x'))
+    session['accy'].append(request.args.get('y'))
+    session['accy'].append(request.args.get('z'))
     return "<p> x accel:" + str(accx)+"<br>y accel:"+str(accy)+"<br>z accel:" +str(accz)+ " </p>"
 # runs our app using Flask
 if __name__ == "__main__":
