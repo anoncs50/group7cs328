@@ -8,7 +8,6 @@ audiolazy==0.6
 audioread==2.1.9
 backcall==0.2.0
 blinker==1.4
-bokeh==2.3.0
 bz2file==0.98
 cached-property==1.5.2
 cachetools==3.1.1
@@ -25,7 +24,6 @@ discord.py==1.6.0
 distlib==0.3.1
 dm-sonnet==2.0.0
 dm-tree==0.1.5
-dopamine-rl==3.0.1
 filelock==3.0.12
 fix-yahoo-finance==0.0.22
 Flask==1.1.2
@@ -87,7 +85,6 @@ packaging==20.9
 pandas==0.23.4
 parso==0.8.1
 pickleshare==0.7.5
-Pillow==8.1.0
 pluggy==0.8.0
 pretty-midi==0.2.9
 promise==2.3
