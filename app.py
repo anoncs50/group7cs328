@@ -20,9 +20,15 @@ def data():
         session['accx'] = []
         session['accy'] = []
         session['accz'] = []
-    session['accx'].append(request.args.get('x'))
-    session['accy'].append(request.args.get('y'))
-    session['accy'].append(request.args.get('z'))
+    accx = session['accx']
+    accy = session['accy']
+    accz = session['accz']
+    accx.append(request.args.get('x'))
+    accy.append(request.args.get('y'))
+    accz.append(request.args.get('z'))
+    session['accx']=accx
+    session['accy']=accy
+    session['accz']=accz
     return "<p> x accel:" + str(accx)+"<br>y accel:"+str(accy)+"<br>z accel:" +str(accz)+ " </p>"
 # runs our app using Flask
 if __name__ == "__main__":
