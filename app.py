@@ -15,7 +15,7 @@ def home():
         return render_template("home.html")    
     else:
         data = 7 #request.form['data'] 
-        return render_template("data.html",data)
+        return render_template("data.html",data=data)
 # runs our app using Flask
 if __name__ == "__main__":
     app.run(debug = True)
