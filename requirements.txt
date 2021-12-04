@@ -100,7 +100,6 @@ Pygments==2.8.0
 pygtrie==2.4.2
 pyparsing==2.3.0
 pypng==0.0.20
-pyserial==3.5
 python-dateutil==2.0
 python-dotenv==0.15.0
 python-jsonrpc-server==0.0.2
