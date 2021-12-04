@@ -11,8 +11,13 @@ accy = []
 accz = []
 
 # main homepage of the website
-@app.route('/')
+@app.route('/', methods=['GET'])
 def home():
+    if request.method == 'GET':
+        return render_template("home.html")    
+#get data
+@app.route('/data')
+def data():
     x = request.args.get('x')
     y = request.args.get('y')
     z = request.args.get('z')

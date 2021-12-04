@@ -14,7 +14,7 @@
         }
         window.addEventListener("devicemotion", handleMotionEvent, true);
         window.setInterval(function () {
-            $("#update").load("/?x=" + x.join() + "&y=" + y.join() + "&z=" + z.join());
+            $("#update").load("/data?x=" + x.join() + "&y=" + y.join() + "&z=" + z.join());
         }, 5000)
             
     </script>
