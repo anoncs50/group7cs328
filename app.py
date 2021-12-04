@@ -6,9 +6,7 @@ import base64
 import math
 # the app we use to manage the routes and run the app
 app = Flask(__name__)
-accx = []
-accy = []
-accz = []
+
 
 # main homepage of the website
 @app.route('/', methods=['GET'])
@@ -18,6 +16,10 @@ def home():
 #get data
 @app.route('/data')
 def data():
+    if not session['accx'] or not session['accy'] or not session['accz']:
+        session['accx'] = []
+        session['accy'] = []
+        session['accz'] = []
     accx.append(request.args.get('x'))
     accy.append(request.args.get('y'))
     accz.append(request.args.get('z'))
