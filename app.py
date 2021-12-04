@@ -1,9 +1,11 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session
 import numpy as np
 import matplotlib.pyplot as plt
 from io import BytesIO
 import base64
 import math
+from flask_session import Session
+import time
 # the app we use to manage the routes and run the app
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "gotti"
