@@ -31,12 +31,15 @@
                 $("#update").load("/data?x=" + x + "&y=" + y + "&z=" + z);
             }, 100)
         }
-
+        function clear() {
+            $("#update").load("/data?clear=true);
+        }
     </script>
 </head>
 <body>
     Hey bestie <3
     <div id="update"></div>
+    <button onclick="clear()">Clear</button>
 </body>
 
 </html>
