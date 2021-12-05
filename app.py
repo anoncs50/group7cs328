@@ -49,7 +49,7 @@ def data():
     b2 = base64.b64encode(buffer)
     figDec =b2.decode('utf-8')
     plotData.append(figDec)
-    return  '<img src="data:image/png;base64,' + plotData[0] + ' alt = "accelerometer data" >'
+    return  '<img src="data:image/png;base64,' + plotData[0] + '" alt = "accelerometer data" >'
 # runs our app using Flask
 if __name__ == "__main__":
     app.run(debug = True)
