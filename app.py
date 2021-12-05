@@ -18,20 +18,38 @@ def home():
 #get data
 @app.route('/data')
 def data():
-    if not 'accx' in session or not 'accy' in session or not 'accz' in session:
+    if not 'accx' in session or not 'accy' in session or not 'accz' or not 'time' in session:
         session['accx'] = []
         session['accy'] = []
         session['accz'] = []
+        session['time'] = []
     accx = session['accx']
     accy = session['accy']
     accz = session['accz']
+    tim = session['time']
     accx.append(request.args.get('x'))
     accy.append(request.args.get('y'))
     accz.append(request.args.get('z'))
+    tim.append(time.time())
     session['accx']=accx
     session['accy']=accy
     session['accz']=accz
-    return "<p> x accel:" + str(accx)+"<br>y accel:"+str(accy)+"<br>z accel:" +str(accz)+ " </p>"
+    session['time']=tim
+    tim = np.array(tim)
+    tim=tim-tim[0]
+    plt.plot(tim, accx,"-r", tim, accy, "-g", tim, accz, "-b")
+    plt.xlabel("Time (s)")
+    plt.ylabel("Acceleration (m/s/s)")
+    plt.legend(['x-axis', 'y-axis', 'z-axis'])
+    plotData=[]
+    fig = BytesIO()
+    plt.savefig(fig, format='png')
+    fig.seek(0)
+    buffer = b''.join(fig)
+    b2 = base64.b64encode(buffer)
+    figDec =b2.decode('utf-8')
+    plotData.append(figDec)
+    return  '<img src="data:image/png;base64,' + plotData[0] + ' alt = "accelerometer data" >'
 # runs our app using Flask
 if __name__ == "__main__":
     app.run(debug = True)
