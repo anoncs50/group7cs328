@@ -29,9 +29,9 @@ def data():
     accz = session['accz']
     tim = session['time']
     if not request.args.get('clear'):
-        accx.append(request.args.get('x'))
-        accy.append(request.args.get('y'))
-        accz.append(request.args.get('z'))
+        accx.append(int(request.args.get('x')))
+        accy.append(int(request.args.get('y')))
+        accz.append(int(request.args.get('z')))
         tim.append(time.time())
         session['accx']=accx
         session['accy']=accy
