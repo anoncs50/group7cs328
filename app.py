@@ -48,7 +48,7 @@ def login():
             """, (session['u'], [], [], [], []))
         con.commit()
         con.close()
-        return '<br>'
+        return '<p>'+session[u']+'</p>'
 #get data
 @app.route('/data')
 def data():
