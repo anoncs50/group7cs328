@@ -60,7 +60,7 @@ def data():
     DATABASE_URL = os.environ.get('DATABASE_URL')
     con = psycopg2.connect(DATABASE_URL)
     cur = con.cursor()
-    if (not (request.args.get('u') is None or request.args.get('accx') is None or request.args.get('accy')is None or request.args.get('accz') is None)):
+    if True:
         u = request.args.get('u')
         try:
             cur.execute("""
