@@ -100,7 +100,7 @@ def data():
         cur.execute(""" UPDATE users
             SET accz = %s
             WHERE username = %s""", (accz,u))
-        plt.plot(tim, accx,"-r", tim, accy, "-g", tim, accz, "-b")
+        plt.plot(np.array(tim)-tim[0], accx,"-r", tim, accy, "-g", tim, accz, "-b")
         plt.xlabel("Time (s)")
         plt.ylabel("Acceleration (m/s/s)")
         plt.legend(['x-axis', 'y-axis', 'z-axis'])
