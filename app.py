@@ -5,7 +5,6 @@ from io import BytesIO
 import base64
 import math
 from flask_session import Session
-from time import now
 import psycopg2
 import os
 
@@ -80,7 +79,7 @@ def data():
         """, (u,))
     user = cur.fetchone()
     if not user is None:
-        user[1].append(now())
+        user[1].append(int(request.args.get('accx')))
         user[2].append(int(request.args.get('accx')))
         user[3].append(int(request.args.get('accy')))
         user[4].append(int(request.args.get('accz')))
