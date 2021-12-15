@@ -50,11 +50,11 @@ def login():
     con.close()
     return '<p>Hello, '+session['u']+'!</p>'
 
-@app.route('/clear', methods=['GET'])
+@app.route('/clear')
 def clear():
     session.clear()
 #get data
-@app.route('/data', methods=['GET'])
+@app.route('/data')
 def data():
     DATABASE_URL = os.environ.get('DATABASE_URL')
     con = psycopg2.connect(DATABASE_URL)
