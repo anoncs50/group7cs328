@@ -23,34 +23,33 @@ def login():
     DATABASE_URL = os.environ.get('DATABASE_URL')
     con = psycopg2.connect(DATABASE_URL)
     cur = con.cursor()
-    if request.args.get('u'):
-        session['u'] = request.args.get('u')
-        try:
-            cur.execute("""
-            SELECT *  FROM users WHERE username = %s;        
-            """, (session['u'],))
-        except Exception:
-            cur.execute("""
-            CREATE TABLE users (
-               username TEXT NOT NULL PRIMARY KEY,
-               time INT[],
-               accx INT[],
-               accy INT[],
-               accz INT[]
-            );
-            """)
-            cur.execute("""
-            SELECT *  FROM users WHERE username = %s;        
-            """, (session['u'],))
-        user = cur.fetchone()
-        if user is None:
-            cur.execute("""
-            INSERT INTO users(username, time, accx, accy, accz)
-            VALUES (%s, %s, %s, %s, %s)
-            """, (session['u'], [], [], [], []))
-        con.commit()
-        con.close()
-        return '<p>Hello, '+session['u']+'!</p>'
+    session['u'] = request.args.get('u')
+    try:
+        cur.execute("""
+        SELECT *  FROM users WHERE username = %s;        
+        """, (session['u'],))
+    except Exception:
+        cur.execute("""
+        CREATE TABLE users (
+            username TEXT NOT NULL PRIMARY KEY,
+            time INT[],
+            accx INT[],
+            accy INT[],
+            accz INT[]
+        );
+        """)
+        cur.execute("""
+        SELECT *  FROM users WHERE username = %s;        
+        """, (session['u'],))
+    user = cur.fetchone()
+    if user is None:
+        cur.execute("""
+        INSERT INTO users(username, time, accx, accy, accz)
+        VALUES (%s, %s, %s, %s, %s)
+        """, (session['u'], [], [], [], []))
+    con.commit()
+    con.close()
+    return '<p>Hello, '+session['u']+'!</p>'
 
 @app.route('/clear')
 def clear():
