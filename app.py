@@ -23,7 +23,14 @@ def login():
     DATABASE_URL = os.environ.get('DATABASE_URL')
     con = psycopg2.connect(DATABASE_URL)
     cur = con.cursor()
-    cur.execute("""
+    if request.args.get('u'):
+        session['u'] = request.args.get('u')
+        try:
+            cur.execute("""
+            SELECT *  FROM users WHERE username = %s;        
+            """, (session['u'],))
+        except Exception:
+            cur.execute("""
             CREATE TABLE users (
                username TEXT NOT NULL PRIMARY KEY,
                time INT[],
@@ -31,12 +38,10 @@ def login():
                accy INT[],
                accz INT[]
             );
-        """)
-    if request.args.get('u'):
-        session['u'] = request.args.get('u')
-        cur.execute("""
-        SELECT *  FROM users WHERE username = %s;        
-        """, (session['u'],))
+            """)
+            cur.execute("""
+            SELECT *  FROM users WHERE username = %s;        
+            """, (session['u'],))
         user = cur.fetchone()
         if user is None:
             cur.execute("""
