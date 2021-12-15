@@ -7,7 +7,7 @@ import math
 from flask_session import Session
 import time
 import psycopg2
-
+import os
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
 con = psycopg2.connect(DATABASE_URL)
