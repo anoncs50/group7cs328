@@ -22,7 +22,7 @@
                     window.addEventListener("devicemotion", handleMotionEvent, true);
                 window.setInterval(function () {
                     if (submitted) {
-                       // $("#update").load("/data?x=" + x + "&y=" + y + "&z=" + z);
+                       $("#update").load("/data?x=" + x + "&y=" + y + "&z=" + z);
                     }
                     }, 100)
                 }
@@ -32,8 +32,11 @@
             console.log("bestie <3")
             window.addEventListener("devicemotion", handleMotionEvent, true);
             window.setInterval(function () {
-            //    $("#update").load("/data?x=" + x + "&y=" + y + "&z=" + z);
-            }, 100)
+                if (submitted) {
+                    $("#update").load("/data?x=" + x + "&y=" + y + "&z=" + z);
+                }
+            }, 100);
+
         }
         function submit() {
             if (document.getElementById("uname").value != "") {
