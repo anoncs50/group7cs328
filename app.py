@@ -113,6 +113,8 @@ def data():
         b2 = base64.b64encode(buffer)
         figDec =b2.decode('utf-8')
         plotData.append(figDec)
+        con.commit()
+        con.close()
         return  '<img src="data:image/png;base64,' + plotData[0] + '" alt = "accelerometer data" style="width: 20%" >'
     con.commit()
     con.close()
