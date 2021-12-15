@@ -35,6 +35,13 @@
                 $("#update").load("/data?x=" + x + "&y=" + y + "&z=" + z);
             }, 100)
         }
+        function submit() {
+            if (document.getElementById("uname").value != "") {
+                $("#update").load("/login?u=" + document.getElementById("uname").value);
+                submitted = true;
+                console.log("yay !!!");
+            }
+        } 
         function clear() {
             $("#update").load("/data?clear=true");
         }
@@ -47,14 +54,7 @@
                     $("#update").load("/data?x=" + x + "&y=" + y + "&z=" + z);
                 }, 100)
             }
-        });
-        function submit() {
-            if (document.getElementById("uname").value!="") {
-                $("#update").load("/login?u="+document.getElementById("uname").value);
-                submitted = true;
-                console.log("yay !!!");
-            }
-        }  
+        }); 
     </script>
 </head>
 <body>
