@@ -81,7 +81,7 @@ def data():
     user = cur.fetchone()
     if not user is None:
         user[1].append(time.time())
-        user[2].append(float(request.args.get('x'))
+        user[2].append(float(request.args.get('x')))
         user[3].append(float(request.args.get('y')))
         user[4].append(float(request.args.get('z')))
         accx = user[2]
