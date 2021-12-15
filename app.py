@@ -60,7 +60,7 @@ def data():
     DATABASE_URL = os.environ.get('DATABASE_URL')
     con = psycopg2.connect(DATABASE_URL)
     cur = con.cursor()
-    if request.args.get('u') and request.args.get('accx') and request.args.get('accy') and request.args.get('accz'):
+    if (not (request.args.get('u') is None or request.args.get('accx') is None or request.args.get('accy')is None or request.args.get('accz') is None)):
         u = request.args.get('u')
         try:
             cur.execute("""
@@ -80,7 +80,7 @@ def data():
             SELECT *  FROM users WHERE username = %s;        
             """, (u,))
         user = cur.fetchone()
-        if user:
+        if not user is None:
             user[1].append(time.now())
             user[2].append(int(request.args.get('accx')))
             user[3].append(int(request.args.get('accy')))
