@@ -9,21 +9,6 @@ import time
 import psycopg2
 import os
 
-DATABASE_URL = os.environ.get('DATABASE_URL')
-con = psycopg2.connect(DATABASE_URL)
-cur = con.cursor()
-try:
-    cur.execute("""
-        CREATE TABLE users (
-           username TEXT NOT NULL PRIMARY KEY,
-           time INT[],
-           accx INT[],
-           accy INT[],
-           accz INT[]
-        );
-    """)
-except Exception:
-    pass
 # the app we use to manage the routes and run the app
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "gotti"
@@ -35,6 +20,21 @@ def home():
         return render_template("home.html")  
 @app.route('/login')
 def login():
+    DATABASE_URL = os.environ.get('DATABASE_URL')
+    con = psycopg2.connect(DATABASE_URL)
+    cur = con.cursor()
+    try:
+        cur.execute("""
+            CREATE TABLE users (
+               username TEXT NOT NULL PRIMARY KEY,
+               time INT[],
+               accx INT[],
+               accy INT[],
+               accz INT[]
+            );
+        """)
+    except Exception:
+        pass
     if request.args.get('u'):
         session['u'] = request.args.get('u')
         cur.execute("""
@@ -47,6 +47,7 @@ def login():
             VALUES (%s, %s, %s, %s, %s)
             """, (session['u'], [], [], [], []))
         con.commit()
+        con.close()
         return '<br>'
 #get data
 @app.route('/data')
