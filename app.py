@@ -117,8 +117,8 @@ def data():
             return  '<img src="data:image/png;base64,' + plotData[0] + '" alt = "accelerometer data" style="width: 20%" >'
         con.commit()
         con.close()
-        return "<br>"
-    return "<br>"
+        return "<p>user not found</p>"
+    return "<p>empty</p>"
 # runs our app using Flask
 if __name__ == "__main__":
     app.run(debug = True)
