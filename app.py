@@ -49,6 +49,10 @@ def login():
         con.commit()
         con.close()
         return '<p>'+session['u']+'</p>'
+
+@app.route('/clear')
+def clear():
+    session.clear()
 #get data
 @app.route('/data')
 def data():
