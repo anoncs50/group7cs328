@@ -19,7 +19,9 @@
                     // Add a listener to get smartphone acceleration 
                     // in the XYZ axes (units in m/s^2)
                     while (true) {
-                        if ()
+                        if (submitted) {
+                            break;
+                        }
                     }
                     window.addEventListener("devicemotion", handleMotionEvent, true);
                     window.setInterval(function () {
