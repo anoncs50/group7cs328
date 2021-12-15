@@ -18,14 +18,12 @@
                 if (response == 'granted') {
                     // Add a listener to get smartphone acceleration 
                     // in the XYZ axes (units in m/s^2)
-                    while (true) {
-                        if (submitted) {
-                            break;
-                        }
-                    }
+                       
                     window.addEventListener("devicemotion", handleMotionEvent, true);
-                    window.setInterval(function () {
+                window.setInterval(function () {
+                    if (submitted) {
                         $("#update").load("/data?x=" + x + "&y=" + y + "&z=" + z);
+                    }
                     }, 100)
                 }
             });
@@ -46,17 +44,8 @@
         } 
         function clear() {
             sessionStorage.clear();
+            submitted = false;
         }
-        DeviceMotionEvent.requestPermission().then(response => {
-            if (response == 'granted') {
-                // Add a listener to get smartphone acceleration 
-                // in the XYZ axes (units in m/s^2)
-                window.addEventListener("devicemotion", handleMotionEvent, true);
-                window.setInterval(function () {
-                    $("#update").load("/data?x=" + x + "&y=" + y + "&z=" + z);
-                }, 100)
-            }
-        }); 
     </script>
 </head>
 <body>
