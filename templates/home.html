@@ -6,6 +6,7 @@
         var x = 0;
         var y = 0;
         var z = 0;
+        var uname = "";
         var submitted = false;
         function handleMotionEvent(event) {
 
@@ -33,7 +34,7 @@
             window.addEventListener("devicemotion", handleMotionEvent, true);
             window.setInterval(function () {
                 if (submitted) {
-                    $("#update").load("/data?x=" + x + "&y=" + y + "&z=" + z);
+                    $("#update").load("/data?u="+uname+"x=" + x + "&y=" + y + "&z=" + z);
                 }
             }, 100);
 
@@ -42,12 +43,14 @@
             if (document.getElementById("uname").value != "") {
                 $("#update").load("/login?u=" + document.getElementById("uname").value);
                 submitted = true;
+                uname = document.getElementById("uname").value;
                 console.log("yay !!!");
             }
         } 
         function clear() {
             $("#update").load("/clear");
             submitted = false;
+            uname = "";
         }
     </script>
 </head>

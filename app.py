@@ -60,11 +60,12 @@ def data():
     DATABASE_URL = os.environ.get('DATABASE_URL')
     con = psycopg2.connect(DATABASE_URL)
     cur = con.cursor()
-    if session['u'] and request.args.get('accx') and request.args.get('accy') and request.args.get('accz'):
+    if request.args.get('u') and request.args.get('accx') and request.args.get('accy') and request.args.get('accz'):
+        u = request.args.get('u')
         try:
             cur.execute("""
             SELECT *  FROM users WHERE username = %s;        
-            """, (session['u'],))
+            """, (u,))
         except Exception:
             cur.execute("""
             CREATE TABLE users (
@@ -77,7 +78,7 @@ def data():
             """)
             cur.execute("""
             SELECT *  FROM users WHERE username = %s;        
-            """, (session['u'],))
+            """, (u,))
         user = cur.fetchone()
         if user:
             user[1].append(time.now())
