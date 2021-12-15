@@ -118,6 +118,7 @@ def data():
         con.commit()
         con.close()
         return "<br>"
+    return "<br>"
 # runs our app using Flask
 if __name__ == "__main__":
     app.run(debug = True)
