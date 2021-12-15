@@ -13,31 +13,32 @@
             x = event.acceleration.x;
             y = event.acceleration.y;
             z = event.acceleration.z;
-        }
-        if (DeviceOrientationEvent && typeof (DeviceOrientationEvent.requestPermission) === "function") {
-            DeviceMotionEvent.requestPermission().then(response => {
-                if (response == 'granted') {
-                    // Add a listener to get smartphone acceleration 
-                    // in the XYZ axes (units in m/s^2)
-                       
-                    window.addEventListener("devicemotion", handleMotionEvent, true);
+
+            if (DeviceOrientationEvent && typeof (DeviceOrientationEvent.requestPermission) === "function") {
+                DeviceMotionEvent.requestPermission().then(response => {
+                    if (response == 'granted') {
+                        // Add a listener to get smartphone acceleration 
+                        // in the XYZ axes (units in m/s^2)
+
+                        window.addEventListener("devicemotion", handleMotionEvent, true);
+                        window.setInterval(function () {
+                            if (submitted) {
+                                $("#update").load("/data?u=" + uname + "&x=" + x + "&y=" + y + "&z=" + z);
+                            }
+                        }, 100)
+                    }
+                });
+            }
+            else {
+                console.log("bestie <3")
+                window.addEventListener("devicemotion", handleMotionEvent, true);
                 window.setInterval(function () {
                     if (submitted) {
-                       $("#update").load("/data?x=" + x + "&y=" + y + "&z=" + z);
+                        $("#update").load("/data?u=" + uname + "&x=" + x + "&y=" + y + "&z=" + z);
                     }
-                    }, 100)
-                }
-            });
-        }
-        else {
-            console.log("bestie <3")
-            window.addEventListener("devicemotion", handleMotionEvent, true);
-            window.setInterval(function () {
-                if (submitted) {
-                    $("#update").load("/data?u="+uname+"&x=" + x + "&y=" + y + "&z=" + z);
-                }
-            }, 100);
+                }, 100);
 
+            }
         }
         function submit() {
             if (document.getElementById("uname").value != "") {
