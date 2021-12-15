@@ -9,7 +9,7 @@ import time
 import psycopg2
 
 
-DATABASE_URL = os.environ.get(‘DATABASE_URL’)
+DATABASE_URL = os.environ.get('DATABASE_URL')
 con = psycopg2.connect(DATABASE_URL)
 cur = con.cursor()
 try:
