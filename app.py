@@ -83,11 +83,8 @@ def data():
         user[2].append(int(request.args.get('x')))
         user[3].append(int(request.args.get('y')))
         user[4].append(int(request.args.get('z')))
-        accx = np.array(user[2])
-        accy = np.array(user[3])
-        accz = np.array(user[4])
         tim= np.array(user[1])
-        tim = tim - tim[0]
+        tim = (tim - tim[0]).tolist()
         cur.execute(""" UPDATE users
             SET time = %s
             WHERE username = %s""", (tim,u))
