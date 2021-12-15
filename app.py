@@ -90,16 +90,16 @@ def data():
         tim = tim - tim[0]
         cur.execute(""" UPDATE users
             SET time = %s
-            WHERE username = %s""", (tim,), (u,))
+            WHERE username = %s""", (tim,u))
         cur.execute(""" UPDATE users
             SET accx = %s
-            WHERE username = %s""", (accx,), (u,))
+            WHERE username = %s""", (accx,u))
         cur.execute(""" UPDATE users
             SET accy = %s
-            WHERE username = %s""", (accy,), (u,))
+            WHERE username = %s""", (accy,u))
         cur.execute(""" UPDATE users
             SET accz = %s
-            WHERE username = %s""", (accz), (u,))
+            WHERE username = %s""", (accz,u))
         plt.plot(tim, accx,"-r", tim, accy, "-g", tim, accz, "-b")
         plt.xlabel("Time (s)")
         plt.ylabel("Acceleration (m/s/s)")
