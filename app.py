@@ -23,7 +23,8 @@ def login():
     DATABASE_URL = os.environ.get('DATABASE_URL')
     con = psycopg2.connect(DATABASE_URL)
     cur = con.cursor()
-    cur.execute("""
+    try:
+        cur.execute("""
             CREATE TABLE users (
                username TEXT NOT NULL PRIMARY KEY,
                time INT[],
@@ -32,7 +33,8 @@ def login():
                accz INT[]
             );
         """)
-    app.logger.debug('This is a DEBUG log record.')
+    except Exception:
+        pass
     if request.args.get('u'):
         session['u'] = request.args.get('u')
         cur.execute("""

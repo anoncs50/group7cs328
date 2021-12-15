@@ -45,7 +45,7 @@
             }
         } 
         function clear() {
-            $("#update").load("/data?clear=true");
+            sessionStorage.clear();
         }
         DeviceMotionEvent.requestPermission().then(response => {
             if (response == 'granted') {
@@ -64,6 +64,7 @@
     <div id="update"></div>
     <input type="text" id="uname" name="uname">
     <button onclick="submit()">Submit</button>
+    <button onclick="clear()">Clear</button>
 </body>
 
 </html>
