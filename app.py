@@ -83,6 +83,9 @@ def data():
         user[2].append(int(request.args.get('x')))
         user[3].append(int(request.args.get('y')))
         user[4].append(int(request.args.get('z')))
+        accx = user[2]
+        accy = user[3]
+        accz = user[4]
         tim= np.array(user[1])
         tim = (tim - tim[0]).tolist()
         cur.execute(""" UPDATE users
