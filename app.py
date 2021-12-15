@@ -87,8 +87,7 @@ def data():
         accx = user[2]
         accy = user[3]
         accz = user[4]
-        tim= np.array(user[1])
-        tim = (tim - tim[0]).tolist()
+        tim = user[1]
         cur.execute(""" UPDATE users
             SET time = %s
             WHERE username = %s""", (tim,u))
