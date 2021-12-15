@@ -6,18 +6,21 @@
         var x = 0;
         var y = 0;
         var z = 0;
+        var submitted = false;
         function handleMotionEvent(event) {
 
             x = event.acceleration.x;
             y = event.acceleration.y;
             z = event.acceleration.z;
         }
-<<<<<<< HEAD
         if (DeviceOrientationEvent && typeof (DeviceOrientationEvent.requestPermission) === "function") {
             DeviceMotionEvent.requestPermission().then(response => {
                 if (response == 'granted') {
                     // Add a listener to get smartphone acceleration 
                     // in the XYZ axes (units in m/s^2)
+                    while (true) {
+                        if ()
+                    }
                     window.addEventListener("devicemotion", handleMotionEvent, true);
                     window.setInterval(function () {
                         $("#update").load("/data?x=" + x + "&y=" + y + "&z=" + z);
@@ -35,7 +38,6 @@
         function clear() {
             $("#update").load("/data?clear=true");
         }
-=======
         DeviceMotionEvent.requestPermission().then(response => {
             if (response == 'granted') {
                 // Add a listener to get smartphone acceleration 
@@ -46,14 +48,20 @@
                 }, 100)
             }
         });
-        
-
->>>>>>> parent of f5e63cd (Update home.html)
+        function submit() {
+            if (document.getElementById("uname").value!="") {
+                $("#update").load("/login?u="+document.getElementById("uname").value);
+                submitted = true;
+                console.log("yay !!!");
+            }
+        }  
     </script>
 </head>
 <body>
     Hey bestie <3
     <div id="update"></div>
+    <input type="text" id="uname" name="uname">
+    <button onclick="submit()">Submit</button>
     <button onclick="clear()">Clear</button>
 </body>
 
