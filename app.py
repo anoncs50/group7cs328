@@ -80,7 +80,7 @@ def data():
         """, (u,))
     user = cur.fetchone()
     if not user is None:
-        user[1].append(time.time())
+        user[1].append(time.time_ns())
         user[2].append(float(request.args.get('x')))
         user[3].append(float(request.args.get('y')))
         user[4].append(float(request.args.get('z')))
@@ -101,7 +101,7 @@ def data():
             SET accz = %s
             WHERE username = %s""", (accz,u))
         plt.plot(np.array(tim)-tim[0], accx,"-r", np.array(tim)-tim[0], accy, "-g", np.array(tim)-tim[0], accz, "-b")
-        plt.xlabel("Time (s)")
+        plt.xlabel("Time (ns)")
         plt.ylabel("Acceleration (m/s/s)")
         plt.legend(['x-axis', 'y-axis', 'z-axis'])
         plotData=[]
