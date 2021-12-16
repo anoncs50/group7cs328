@@ -66,7 +66,7 @@ def data():
         SELECT *  FROM users WHERE username = %s;        
         """, (u,))
     except Exception:
-        ccur.execute("""
+        cur.execute("""
         CREATE TABLE users (
             username TEXT NOT NULL PRIMARY KEY,
             time FLOAT[],
