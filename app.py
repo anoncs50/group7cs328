@@ -32,10 +32,10 @@ def login():
         cur.execute("""
         CREATE TABLE users (
             username TEXT NOT NULL PRIMARY KEY,
-            time INT[],
-            accx INT[],
-            accy INT[],
-            accz INT[]
+            time FLOAT[],
+            accx FLOAT[],
+            accy FLOAT[],
+            accz FLOAT[]
         );
         """)
         cur.execute("""
@@ -66,13 +66,13 @@ def data():
         SELECT *  FROM users WHERE username = %s;        
         """, (u,))
     except Exception:
-        cur.execute("""
+        ccur.execute("""
         CREATE TABLE users (
             username TEXT NOT NULL PRIMARY KEY,
-            time INT[],
-            accx INT[],
-            accy INT[],
-            accz INT[]
+            time FLOAT[],
+            accx FLOAT[],
+            accy FLOAT[],
+            accz FLOAT[]
         );
         """)
         cur.execute("""
@@ -80,7 +80,7 @@ def data():
         """, (u,))
     user = cur.fetchone()
     if not user is None:
-        user[1].append(time.time_ns())
+        user[1].append(time.time_ns()/10**9)
         user[2].append(float(request.args.get('x')))
         user[3].append(float(request.args.get('y')))
         user[4].append(float(request.args.get('z')))
