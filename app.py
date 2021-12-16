@@ -29,6 +29,7 @@ def login():
         SELECT *  FROM users WHERE username = %s;        
         """, (session['u'],))
     except Exception:
+        cur.execute("rollback")
         cur.execute("""
         CREATE TABLE users (
             username TEXT NOT NULL PRIMARY KEY,
@@ -66,6 +67,7 @@ def data():
         SELECT *  FROM users WHERE username = %s;        
         """, (u,))
     except Exception:
+        cur.execute("rollback")
         cur.execute("""
         CREATE TABLE users (
             username TEXT NOT NULL PRIMARY KEY,
